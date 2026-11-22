@@ -1,0 +1,823 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Yuli's Bakery Shop</title>
+
+<style>
+* {
+    box-sizing: border-box;
+    scroll-behavior: smooth;
+}
+
+body {
+    margin: 0;
+    font-family: 'Trebuchet MS', Arial, sans-serif;
+    background: #fff9f2;
+    color: #634331;
+}
+
+header {
+    text-align: center;
+    padding: 35px 15px;
+    background: linear-gradient(120deg, #f5c6ce, #fff0d9, #e9c5a5);
+    border-bottom: 4px solid #d8a68b;
+}
+
+header h1 {
+    font-family: Georgia, serif;
+    font-size: 45px;
+    color: #704333;
+    margin: 5px;
+    letter-spacing: 2px;
+}
+
+header p {
+    font-style: italic;
+    color: #93634e;
+    margin: 8px;
+}
+
+nav {
+    background: #754b3a;
+    padding: 16px;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 30px;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    box-shadow: 0 4px 10px #754b3a25;
+}
+
+nav a {
+    color: #fff5e9;
+    text-decoration: none;
+    font-weight: bold;
+    transition: .3s;
+}
+
+nav a:hover {
+    color: #f5c6ce;
+    transform: translateY(-2px);
+}
+
+.hero {
+    min-height: 450px;
+    background:
+    linear-gradient(90deg, rgba(255,244,232,.94), rgba(255,244,232,.25)),
+    url("https://images.unsplash.com/photo-1578985545062-69928b1d9587?w=1400");
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    align-items: center;
+    padding: 50px 8%;
+}
+
+.hero-content {
+    max-width: 560px;
+    background: #fffaf0e8;
+    padding: 30px;
+    border-radius: 25px;
+    border: 2px solid #e9c5a5;
+    box-shadow: 0 8px 20px #754b3a25;
+}
+
+.hero h2 {
+    font-family: Georgia, serif;
+    font-size: 45px;
+    color: #754b3a;
+    margin-top: 0;
+}
+
+.hero p {
+    font-size: 18px;
+    line-height: 1.8;
+    color: #704b3b;
+}
+
+.main-button {
+    display: inline-block;
+    background: #d98c9c;
+    color: white;
+    padding: 14px 25px;
+    border-radius: 30px;
+    text-decoration: none;
+    font-weight: bold;
+    transition: .3s;
+}
+
+.main-button:hover {
+    background: #754b3a;
+    transform: translateY(-3px);
+}
+
+section {
+    padding: 55px 6%;
+}
+
+.section-title {
+    text-align: center;
+    color: #754b3a;
+    font-family: Georgia, serif;
+    font-size: 35px;
+    margin-bottom: 10px;
+}
+
+.subtitle {
+    text-align: center;
+    color: #9b705a;
+    margin-bottom: 35px;
+}
+
+#about {
+    background: #fff9f2;
+}
+
+.about {
+    display: flex;
+    align-items: center;
+    gap: 35px;
+    background: #fce8e8;
+    border: 2px solid #e9c5a5;
+    border-radius: 28px;
+    padding: 30px;
+    box-shadow: 0 6px 15px #754b3a15;
+}
+
+.about img {
+    width: 40%;
+    height: 280px;
+    object-fit: cover;
+    border-radius: 22px;
+    border: 4px solid white;
+}
+
+.about-text {
+    line-height: 1.8;
+}
+
+.about-text h2 {
+    color: #754b3a;
+    font-family: Georgia, serif;
+}
+
+.products {
+    background: #fff0e5;
+}
+
+.product-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 22px;
+}
+
+.product-card {
+    background: white;
+    border: 2px solid #edc9b5;
+    border-radius: 22px;
+    padding: 16px;
+    text-align: center;
+    box-shadow: 0 5px 15px #754b3a15;
+    transition: .3s;
+}
+
+.product-card:hover {
+    transform: translateY(-7px);
+    box-shadow: 0 9px 18px #754b3a25;
+}
+
+.product-card img {
+    width: 100%;
+    height: 180px;
+    object-fit: cover;
+    border-radius: 16px;
+}
+
+.product-card h3 {
+    color: #754b3a;
+    font-family: Georgia, serif;
+}
+
+.product-card p {
+    color: #c47788;
+    font-weight: bold;
+}
+
+.product-card button {
+    background: #d98c9c;
+    color: white;
+    border: none;
+    padding: 12px 22px;
+    border-radius: 25px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: .3s;
+}
+
+.product-card button:hover {
+    background: #754b3a;
+}
+
+.services {
+    background: #fce8e8;
+}
+
+.service-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 22px;
+}
+
+.service-card {
+    background: #fffaf0;
+    text-align: center;
+    padding: 30px 22px;
+    border-radius: 22px;
+    border: 2px solid #e9c5a5;
+    box-shadow: 0 5px 12px #754b3a12;
+    transition: .3s;
+}
+
+.service-card:hover {
+    transform: translateY(-6px);
+    background: white;
+}
+
+.service-card h2 {
+    font-size: 40px;
+}
+
+.service-card h3 {
+    color: #754b3a;
+    font-family: Georgia, serif;
+}
+
+#gallery {
+    background: #fff9f2;
+}
+
+.gallery-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 18px;
+}
+
+.gallery-grid img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    border-radius: 20px;
+    border: 4px solid #f2d2d0;
+    box-shadow: 0 5px 12px #754b3a15;
+    transition: .3s;
+}
+
+.gallery-grid img:hover {
+    transform: scale(1.04);
+}
+
+/* PORTFOLIO */
+#portfolio {
+    background: #fce8e8;
+}
+
+.portfolio-heading {
+    color: #754b3a;
+    font-family: Georgia, serif;
+    margin: 35px 0 18px;
+}
+
+/* Separate Activities and Exercises boxes */
+.project-card {
+    background: #fffaf0;
+    border: 2px solid #e9c5a5;
+    border-radius: 22px;
+    padding: 30px 20px;
+    max-width: 650px;
+    margin: 25px auto 40px;
+    text-align: center;
+    box-shadow: 0 5px 15px #754b3a15;
+}
+
+.project-card h2 {
+    color: #754b3a;
+    font-family: Georgia, serif;
+    margin-top: 0;
+}
+
+.portfolio-item {
+    display: none;
+    margin: 25px auto;
+}
+
+.portfolio-item.active {
+    display: block;
+}
+
+.portfolio-item a {
+    display: inline-block;
+    background: #fce8e8;
+    border: 2px solid #e9c5a5;
+    border-radius: 15px;
+    padding: 22px 35px;
+    min-width: 180px;
+    color: #754b3a;
+    font-size: 20px;
+    font-weight: bold;
+    text-decoration: none;
+    transition: .3s;
+}
+
+.portfolio-item a:hover {
+    background: #d98c9c;
+    color: white;
+    transform: translateY(-4px);
+}
+
+.portfolio-controls {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+    margin-top: 25px;
+}
+
+.portfolio-controls button {
+    background: #d98c9c;
+    color: white;
+    border: none;
+    padding: 12px 25px;
+    border-radius: 25px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: .3s;
+}
+
+.portfolio-controls button:hover:not(:disabled) {
+    background: #754b3a;
+}
+
+.portfolio-controls button:disabled {
+    background: #cbb6ae;
+    cursor: not-allowed;
+}
+
+.page-number {
+    color: #754b3a;
+    font-weight: bold;
+}
+
+/* CONTACTS */
+#contacts {
+    background: #fff0e5;
+}
+
+.contact {
+    background: #fce8e8;
+    border: 2px solid #e9c5a5;
+    border-radius: 25px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 30px;
+    padding: 35px;
+    box-shadow: 0 5px 15px #754b3a15;
+}
+
+.contact-info {
+    line-height: 2;
+}
+
+.contact-info h2 {
+    color: #754b3a;
+    font-family: Georgia, serif;
+}
+
+.contact-form input,
+.contact-form textarea {
+    width: 100%;
+    padding: 14px;
+    margin: 8px 0;
+    border: 1px solid #d9a9a0;
+    border-radius: 12px;
+    font-family: Arial;
+    background: #fffaf0;
+    color: #634331;
+}
+
+.contact-form textarea {
+    height: 120px;
+    resize: vertical;
+}
+
+.contact-form button {
+    background: #d98c9c;
+    color: white;
+    border: none;
+    padding: 13px 25px;
+    border-radius: 25px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: .3s;
+}
+
+.contact-form button:hover {
+    background: #754b3a;
+}
+
+footer {
+    background: #754b3a;
+    color: #fff8f0;
+    text-align: center;
+    padding: 30px;
+}
+
+footer h2 {
+    font-family: Georgia, serif;
+    color: #f5c6ce;
+}
+
+@media (max-width: 800px) {
+    .product-grid,
+    .gallery-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .about {
+        flex-direction: column;
+    }
+
+    .about img {
+        width: 100%;
+    }
+
+    .contact {
+        grid-template-columns: 1fr;
+    }
+
+    .service-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 500px) {
+    header h1 {
+        font-size: 32px;
+    }
+
+    .hero {
+        padding: 25px;
+    }
+
+    .hero h2 {
+        font-size: 32px;
+    }
+
+    .product-grid,
+    .gallery-grid,
+    .service-grid {
+        grid-template-columns: 1fr;
+    }
+
+    nav {
+        gap: 15px;
+    }
+
+    section {
+        padding: 35px 5%;
+    }
+
+    .portfolio-controls {
+        gap: 10px;
+    }
+
+    .portfolio-controls button {
+        padding: 10px 18px;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<header>
+    <h1>🧁 Yuli's Bakery Shop</h1>
+    <p>♡ Sweet Moments, Always Fresh! ♡</p>
+</header>
+
+<nav>
+    <a href="#home">⌂ HOME</a>
+    <a href="#about">ABOUT US</a>
+    <a href="#products">PRODUCTS</a>
+    <a href="#services">SERVICES</a>
+    <a href="#gallery">GALLERY</a>
+    <a href="#portfolio">PORTFOLIO</a>
+    <a href="#contacts">CONTACTS</a>
+</nav>
+
+<section class="hero" id="home">
+    <div class="hero-content">
+        <h2>Welcome to Yuli's Bakery Shop! ♡</h2>
+        <p>
+            Indulge in our homemade treats,
+            baked with love and happiness.
+            Every bite brings a little sweetness!
+        </p>
+        <a href="#products" class="main-button">
+            Explore Our Products →
+        </a>
+    </div>
+</section>
+
+<section id="about">
+    <h2 class="section-title">🧁 About Us</h2>
+    <div class="about">
+        <img src="https://images.unsplash.com/photo-1555507036-ab1f4038808a?w=700"
+             alt="Bakery pastries">
+        <div class="about-text">
+            <h2>Our Sweet Story ♡</h2>
+            <p>
+                Welcome to Yuli's Bakery Shop!
+                We are a small bakery business with a big
+                dream of spreading sweetness and happiness.
+            </p>
+            <p>
+                We offer delicious cakes, cupcakes, cookies,
+                and freshly baked bread made with love.
+                Our goal is to make every celebration
+                extra special.
+            </p>
+            <p><b>Our Motto:</b> Sweet Moments, Always Fresh!</p>
+        </div>
+    </div>
+</section>
+
+<section class="products" id="products">
+    <h2 class="section-title">🍰 Our Products</h2>
+    <p class="subtitle">Freshly Baked, Always Delicious!</p>
+
+    <div class="product-grid">
+        <div class="product-card">
+            <img src="https://images.unsplash.com/photo-1486427944299-d1955d23e34d?w=600" alt="Cupcakes">
+            <h3>Cupcakes</h3>
+            <p>₱50.00</p>
+            <button onclick="orderProduct('Cupcakes')">Order Now</button>
+        </div>
+
+        <div class="product-card">
+            <img src="https://images.unsplash.com/photo-1578985545062-69928b1d9587?w=600" alt="Chocolate cake">
+            <h3>Chocolate Cake</h3>
+            <p>₱450.00</p>
+            <button onclick="orderProduct('Chocolate Cake')">Order Now</button>
+        </div>
+
+        <div class="product-card">
+            <img src="https://images.unsplash.com/photo-1499636136210-6f4ee915583e?w=600" alt="Cookies">
+            <h3>Cookies</h3>
+            <p>₱80.00</p>
+            <button onclick="orderProduct('Cookies')">Order Now</button>
+        </div>
+
+        <div class="product-card">
+            <img src="https://images.unsplash.com/photo-1509440159596-0249088772ff?w=600" alt="Fresh bread">
+            <h3>Fresh Bread</h3>
+            <p>₱35.00</p>
+            <button onclick="orderProduct('Fresh Bread')">Order Now</button>
+        </div>
+    </div>
+</section>
+
+<section class="services" id="services">
+    <h2 class="section-title">🎀 Our Services</h2>
+    <p class="subtitle">Making your celebrations sweeter!</p>
+
+    <div class="service-grid">
+        <div class="service-card">
+            <h2>🎂</h2>
+            <h3>Custom Cakes</h3>
+            <p>Beautiful cakes for your special occasions.</p>
+        </div>
+        <div class="service-card">
+            <h2>🧁</h2>
+            <h3>Pastries and Desserts</h3>
+            <p>Fresh and delicious sweet treats every day.</p>
+        </div>
+        <div class="service-card">
+            <h2>🎁</h2>
+            <h3>Special Orders</h3>
+            <p>Customized bakery treats for your celebrations.</p>
+        </div>
+    </div>
+</section>
+
+<section id="gallery">
+    <h2 class="section-title">📸 Our Gallery</h2>
+    <p class="subtitle">Sweet Creations Just For You!</p>
+    <div class="gallery-grid">
+        <img src="https://images.unsplash.com/photo-1486427944299-d1955d23e34d?w=600" alt="Cupcakes">
+        <img src="https://images.unsplash.com/photo-1578985545062-69928b1d9587?w=600" alt="Cake">
+        <img src="https://images.unsplash.com/photo-1499636136210-6f4ee915583e?w=600" alt="Cookies">
+        <img src="https://images.unsplash.com/photo-1509440159596-0249088772ff?w=600" alt="Bread">
+    </div>
+</section>
+
+<!-- PORTFOLIO -->
+<section id="portfolio">
+    <h2 class="section-title">📁 My Portfolio</h2>
+    <p class="subtitle">My Activities and Exercises</p>
+
+    <!-- ACTIVITIES BOX -->
+    <div class="project-card">
+        <h2>📚 My Activities</h2>
+
+        <div id="activities-list">
+
+        <div class="portfolio-item active">
+            <a href="activities/ACT1_INOT_IANNY.html">Activity 1</a>
+        </div>
+
+        <div class="portfolio-item">
+            <a href="activities/ACT2_INOT_IANNY.html">Activity 2</a>
+        </div>
+
+        <div class="portfolio-item">
+            <a href="activities/ACT3_INOT_IANNY.html">Activity 3</a>
+        </div>
+
+        <div class="portfolio-item">
+            <a href="activities/ACT4_INOT_IANNY.html">Activity 4</a>
+        </div>
+
+        <div class="portfolio-item">
+            <a href="activities/ACT5_INOT_IANNY.html">Activity 5</a>
+        </div>
+
+    </div>
+        </div>
+
+        <div class="portfolio-controls">
+            <button type="button" onclick="changePage('activities', -1)">← Previous</button>
+            <span class="page-number" id="activities-page">1 / 5</span>
+            <button type="button" onclick="changePage('activities', 1)">Next →</button>
+        </div>
+    </div>
+
+    <!-- EXERCISES BOX -->
+    <div class="project-card">
+        <h2>✏️ My Exercises</h2>
+
+        <div id="exercises-list">
+
+        <div class="portfolio-item active">
+            <a href="exercises/EXE1_INOT_IANNY.html">Exercise 1</a>
+        </div>
+
+        <div class="portfolio-item">
+            <a href="exercises/EXE2_INOT_IANNY.html">Exercise 2</a>
+        </div>
+
+        <div class="portfolio-item">
+            <a href="exercises/EXE3_INOT_IANNY.html">Exercise 3</a>
+        </div>
+
+        <div class="portfolio-item">
+            <a href="exercises/EXE4_INOT_IANNY.html">Exercise 4</a>
+        </div>
+
+        <div class="portfolio-item">
+            <a href="exercises/EXE5_INOT_IANNY.html">Exercise 5</a>
+        </div>
+
+        <div class="portfolio-item">
+            <a href="exercises/EXE6_INOT_IANNY.html">Exercise 6</a>
+        </div>
+
+        <div class="portfolio-item">
+            <a href="exercises/EXE7_INOT_IANNY.html">Exercise 7</a>
+        </div>
+
+        <div class="portfolio-item">
+            <a href="exercises/EXE8_INOT_IANNY.html">Exercise 8</a>
+        </div>
+
+        <div class="portfolio-item">
+            <a href="exercises/EXE9_INOT_IANNY.html">Exercise 9</a>
+        </div>
+
+        <div class="portfolio-item">
+            <a href="exercises/EXE10_INOT_IANNY.html">Exercise 10</a>
+        </div>
+
+        <div class="portfolio-item">
+            <a href="exercises/EXE11_INOT_IANNY.html">Exercise 11</a>
+        </div>
+
+        <div class="portfolio-item">
+            <a href="exercises/EXE12_INOT_IANNY.html">Exercise 12</a>
+        </div>
+
+    </div>
+
+        <div class="portfolio-controls">
+            <button type="button" onclick="changePage('exercises', -1)">← Previous</button>
+            <span class="page-number" id="exercises-page">1 / 12</span>
+            <button type="button" onclick="changePage('exercises', 1)">Next →</button>
+        </div>
+    </div>
+
+</section>
+
+<section id="contacts">
+    <h2 class="section-title">💌 Contact Us</h2>
+    <p class="subtitle">We'd love to hear from you!</p>
+
+    <div class="contact">
+        <div class="contact-info">
+            <h2>Yuli's Bakery Shop ♡</h2>
+            <p>📧 Email: yulibakery@gmail.com</p>
+            <p>📞 Phone: +63 912 345 6789</p>
+            <p>📍 Location: Philippines</p>
+            <p>🕒 Open: Monday - Saturday</p>
+        </div>
+
+        <form class="contact-form" onsubmit="sendFeedback(event)">
+            <input type="text" placeholder="Your Name" required>
+            <input type="email" placeholder="Email Address" required>
+            <textarea placeholder="Your Message" required></textarea>
+            <button type="submit">Send Feedback ♡</button>
+        </form>
+    </div>
+</section>
+
+<footer>
+    <h2>🧁 Yuli's Bakery Shop</h2>
+    <p>Sweet Moments, Always Fresh! ♡</p>
+    <p>© 2026 Yuli's Bakery Shop. All Rights Reserved.</p>
+</footer>
+
+<script>
+function orderProduct(product) {
+    alert("Thank you for choosing " + product +
+          "! Please contact us to place your order.");
+}
+
+function sendFeedback(event) {
+    event.preventDefault();
+    alert("Thank you for your feedback! ♡");
+    event.target.reset();
+}
+
+/* PORTFOLIO PREVIOUS AND NEXT BUTTONS */
+
+let portfolioPages = {
+    activities: 0,
+    exercises: 0
+};
+
+function changePage(type, direction) {
+    const list = document.getElementById(type + "-list");
+    const items = list.querySelectorAll(".portfolio-item");
+
+    portfolioPages[type] += direction;
+
+    // Keep the page number within the available items
+    if (portfolioPages[type] < 0) {
+        portfolioPages[type] = 0;
+    }
+
+    if (portfolioPages[type] >= items.length) {
+        portfolioPages[type] = items.length - 1;
+    }
+
+    // Show only the selected activity or exercise
+    items.forEach((item, index) => {
+        item.classList.toggle(
+            "active",
+            index === portfolioPages[type]
+        );
+    });
+
+    // Update the page number
+    document.getElementById(type + "-page").textContent =
+        (portfolioPages[type] + 1) + " / " + items.length;
+
+    // Enable or disable Previous and Next buttons
+    const controls = list.nextElementSibling;
+    const buttons = controls.querySelectorAll("button");
+
+    buttons[0].disabled = portfolioPages[type] === 0;
+    buttons[1].disabled = portfolioPages[type] === items.length - 1;
+}
+
+// Set the initial button states
+document.addEventListener("DOMContentLoaded", function() {
+    changePage("activities", 0);
+    changePage("exercises", 0);
+});
+</script>
+
+</body>
+</html>
